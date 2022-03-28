@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<h1>Hello {{current_user.username}}</h1>
+<p id="center-text">Update your account settings below</p>
+<div class="card mx-auto border-dark" style="width: 30rem;">
+    <div class="card-body">
+        <div class="mb-auto">
+        <img class="profile-img" src="{{url_for('static', filename='profile_pics/' + current_user.profile_image)}}">
+        {{profile_image}} <br>
+        {{filepath}}
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{form.hidden_tag()}}
+                {{form.username.label(class="form-label")}} {{form.username(class="form-control border-dark")}}
+                {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                <div class="error">{{error}}</div>
+                <br>
+                {% endfor %}
+                {% else %}
+                <br>
+                {% endif %}
+
+                {{form.email.label(class="form-label")}} {{form.email(class="form-control border-dark")}}
+                {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                <div class="error">{{error}}</div>
+                <br>
+                {% endfor %}
+                {% else %}
+                <br>
+                {% endif %}
+
+                {{form.picture.label(class="form-label")}} {{form.picture(class="form-control border-dark")}}
+                {% if form.picture.errors %}
+                {% for error in form.picture.errors %}
+                <div class="error">{{error}}</div>
+                <br>
+                {% endfor %}
+                {% else %}
+                <br>
+                {% endif %}
+                {{form.submit(class="btn btn-primary")}}
+
+                <a class="btn btn-primary"  href="{{url_for('users.user_posts', username=form.username.data)}}">Go to my posts page</a>
+            </form>
+    </div>
+</div>
+</div><br>
+{% endblock  %}

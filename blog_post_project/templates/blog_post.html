@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+
+<div class="card mx-auto border-dark">
+    <div class="card-body">
+        <h4 class="card-title">{{post.title}}</h4>
+        By: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a>
+        <p id="date">{{post.date.strftime('%Y-%m-%d')}}</p>
+        <p class="card-text">{{post.text}}</p>
+        
+{% if post.author == current_user %}
+        <div class="btn-toolbar">
+            <div class="btn-group me-2">
+                <a class="btn btn-primary" href="{{url_for('blog_posts.update', blog_post_id=post.id)}}">Update</a>
+            </div>
+
+            <!-- Button trigger modal -->
+            <div class="btn-group me-2">
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete</a>
+            </div>
+        </div>  
+    </div>
+    </div> <br>
+{% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Do you really want to delete this post?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+          <form action="{{url_for('blog_posts.delete_post',blog_post_id=post.id)}}" method="POST">
+            <input class="btn btn-primary" type="submit" value="Delete">
+          </form>
+
+        </div>
+      </div>
+    </div>
+</div>
+  
+
+{% endblock  %}
+

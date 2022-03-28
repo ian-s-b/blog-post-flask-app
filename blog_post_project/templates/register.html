@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="form-group needs-validation" novalidate method="POST">
+    <br>
+    <h1>Create an account</h1> <br>
+    <div class="card mx-auto border-dark" style="width: 30rem;">
+        <div class="card-body">
+            <div class="mb-auto">
+            {{form.hidden_tag()}}
+
+            {{form.email.label(class="form-label")}} {{form.email(class="form-control border-dark")}}
+            {% if form.email.errors %}
+            {% for error in form.email.errors %}
+            <div class="error">{{error}}</div>
+            <br>
+            {% endfor %}
+            {% else %}
+            <br>
+            {% endif %}
+
+            {{form.username.label(class="form-label")}} {{form.username(class="form-control border-dark")}}
+            {% if form.username.errors %}
+            {% for error in form.username.errors %}
+            <div class="error">{{error}}</div>
+            <br>
+            {% endfor %}
+            {% else %}
+            <br>
+            {% endif %}
+
+            {{form.password.label(class="form-label")}} {{form.password(class="form-control border-dark")}}
+            <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long.
+            </div>
+            {% if form.password.errors %}
+            {% for error in form.password.errors %}
+            <div class="error">{{error}}</div>
+            <br>
+            {% endfor %}
+            {% else %}
+            <br>
+            {% endif %}
+
+            {{form.pass_confirm.label(class="form-label")}} {{form.pass_confirm(class="form-control border-dark")}}
+            {% if form.pass_confirm.errors %}
+            {% for error in form.pass_confirm.errors %}
+            <div class="error">{{error}}</div>
+            <br>
+            {% endfor %}
+            {% else %}
+            <br>
+            {% endif %}
+            
+            
+            {{form.submit(class="btn btn-primary")}}
+             </div>
+         </div>
+    </div>
+</form>
+<br>
+{% endblock  %}

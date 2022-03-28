@@ -1,0 +1,51 @@
+.card-body {
+    background-color: white;
+    border-radius: 100%;
+}
+
+body{
+    background-color: #f4f7f8;
+}
+
+.navbar {
+    background-color: #023e8a
+}
+
+.btn-primary {
+    background-color: #023e8a;
+    border-color: #023e8a;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#date {
+    color : rgb(171, 168, 168)
+}
+
+h1, #center-text {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #023e8a;
+}
+
+.form-control {
+    flex: 0 1 100px;
+}
+
+.page-item.active .page-link {
+    background-color: #023e8a !important;
+    border-color: #023e8a !important;
+  }
+
+.error {
+    color: red
+}

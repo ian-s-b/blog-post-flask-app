@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="form-group" method="POST">
+    <br>
+    <h1>{{title}}</h1> <br>
+    <div class="card mx-auto border-dark">
+        <div class="card-body">
+            <div class="mb-auto">
+            {{form.hidden_tag()}}
+            {{form.title.label(class="form-label")}} {{form.title(class="form-control border-dark")}} <br>
+            {{form.text.label(class="form-label")}} {{form.text(class="form-control border-dark")}} <br>
+            {{form.submit(class="btn btn-primary")}}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock  %}

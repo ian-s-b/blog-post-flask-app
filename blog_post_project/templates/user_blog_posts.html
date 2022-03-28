@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<h1 >Welcome to the page for {{user.username}}</h1>
+<img class='profile-img' src="{{url_for('static', filename='profile_pics/' + user.profile_image)}}"><br> 
+
+{% for post in blog_posts.items %}
+<div class="card mx-auto border-dark">
+  <div class="card-body">
+    <h4 class="card-title"><a href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">{{post.title}}</a></h2>
+    By: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a>
+    <p id="date">{{post.date.strftime('%Y-%m-%d')}}</p>
+    <p class="card-text">{{post.text[:100]}}...</p>
+    <a class="btn btn-primary" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">Read Post</a>
+  </div>
+</div> <br>
+{% endfor %}
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+        <a class="page-link">Page</a>
+    </li>
+    {% for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if blog_posts.page == page_num %}
+              <li class="page-item active">
+                <a class='page-link' href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
+              </li>
+            {% else %}
+              <li class="page-item">
+                  <a class='page-link' href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
+              </li>
+            {% endif %}
+    {% endfor %}
+</nav>
+{% endblock content %}
