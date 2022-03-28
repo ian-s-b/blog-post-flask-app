@@ -4,3 +4,6 @@ The objective of this project is to create a social network prototype with the F
 
 Click on the following link to see the website deployed on the heroku server: <br>
 https://blog-post-flask-app.herokuapp.com/
+
+You can register on the site and create an account if you wish.
+
