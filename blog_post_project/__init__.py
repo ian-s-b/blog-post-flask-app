@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 #CONFIGURATIONS
 ##Secret Key
-# app.config['SECRET_KEY'] = 'some_secret_key0'
+app.config['SECRET_KEY'] = '894}=0@sk$*--lL'
 
 ##Database
 basedir = Path(__file__).parent.resolve()
