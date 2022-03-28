@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 #CONFIGURATIONS
 ##Secret Key
-app.config['SECRET_KEY'] = '894}=0@sk$*--lL'
+app.config['SECRET_KEY'] = 'some_secret_key0'#do i have to delete this later?
 
 ##Database
 basedir = Path(__file__).parent.resolve()
